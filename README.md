@@ -1,4 +1,4 @@
-com.caffeinalab.titanium.toast
+com.caffeinalab.titanium.notifications
 ====================================
 
 Toast widget useful for notifications
