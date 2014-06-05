@@ -1,0 +1,7 @@
+<Alloy>
+	<Window class="caffeinaToastWindow" id="caffeinaToastWindow">
+		<View class="caffeinaToastView" id="caffeinaToastView">
+			<Label class="caffeinaToastLabel" id="caffeinaToastLabel" />
+		</View>
+	</Window>
+</Alloy>
