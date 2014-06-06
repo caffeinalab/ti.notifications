@@ -5,7 +5,7 @@ Alloy Titanium widget to display an in-app notification.
 
 ![image](http://cl.ly/image/2j462U291g3e/b.gif)
 
-### Cross Platform
+### Cross Platform ?
 
 On **iOS 7+**, the widget is a tiny view that comes from the top with a simple push-gravity animation, using real `Ti.UI.iOS.Animator` physics engine (Tweetbot style).
 
@@ -14,15 +14,13 @@ On **iOS 6**, a simple alert is displayed, insted.
 On **Android**, the default `Ti.UI.createNotification` method is used.
 
 
-### Usage
-
-#### Instantiate-it
+#### Require
 
 ```javascript
 var Notifier = Alloy.createWidget('com.caffeinalab.titanium.notifications', /* options */);
 ```
 
-##### Options
+#### The Options
 
 ```javascript
 {
@@ -41,19 +39,20 @@ var Notifier = Alloy.createWidget('com.caffeinalab.titanium.notifications', /* o
 }
 ```
 
-#### Show
+#### Usage
 
 ```javascript
+
+// Show setting the message as string
 Notifier.show('Hello, world!');
-```
 
-#### Show with options override
-
-```javascript
+// Show settings other various overrides options.
 Notifier.show({
 	message: 'Notification Test', 
 	icon: '/appicon.png',
 	pushForce: 10,
 	duration: 2500
 });
+
 ```
+
