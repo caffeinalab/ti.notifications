@@ -4,7 +4,6 @@ var args = _.extend({
 	pushForce: 30,
 }, arguments[0] || {});
 
-console.log(args);
 
 /* Vars */
 var timeout;
@@ -35,20 +34,24 @@ function show() {
 	$.caffeinaToastWindow.open();
 
 	timeout = setTimeout(function(){
-		dy.elasticity = 0;
-		pusher.pushDirection = { x: 0, y: -args.pushForce };
+		$.caffeinaToastWindow.animate({
+			top: -$.caffeinaToastWindow.height,
+			duration: 500
+		});
 		setTimeout(hide, 500);
 	}, args.duration);
 }
 
 function hide() {
 	clearTimeout(timeout);
+
 	$.caffeinaToastWindow.close();
 }
 
 /* Init */
 
-$.caffeinaToastLabel.text = args.message;
+if (args.message) $.caffeinaToastLabel.text = args.message;
+if (args.icon) $.caffeinaToastIcon.image = args.icon;
 
 /* Listeners */
 

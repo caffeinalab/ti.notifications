@@ -1,23 +1,27 @@
 ".caffeinaToastWindow":{
-	height: 128,
-	top: -65,
+	height: 150,
+	top: -86,
 	fullscreen: true,
 	backgroundColor: 'transparent'
 },
 ".caffeinaToastView":{
 	top: 0,
-	backgroundColor: '#9000',
-	height: 64,
+	backgroundColor: '#EE1D477B',
+	height: 65,
 	touchEnabled: false
+},
+".caffeinaToastIcon":{
+	left: 8,
+	height: 42
 },
 ".caffeinaToastLabel":{
 	touchEnabled: false,
-	left: 15,
-	right: 15,
+	left: 60,
+	right: 10,
 	height: 60,
 	color: '#fff',
 	textAlign: 'left',
 	font: {
-		fontSize: 18
+		fontSize: 14
 	}
 }
