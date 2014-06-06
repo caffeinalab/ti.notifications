@@ -3,7 +3,7 @@ com.caffeinalab.titanium.notifications
 
 Toast widget useful for notifications
 
-![image](http://cl.ly/image/2j462U291g3e)
+![image](http://cl.ly/image/2j462U291g3e/b.gif)
 
 
 ### Usage
