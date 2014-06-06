@@ -1,9 +1,17 @@
 com.caffeinalab.titanium.notifications
 ====================================
 
-Toast widget useful for notifications
+Alloy Titanium widget to display an in-app notification.
 
 ![image](http://cl.ly/image/2j462U291g3e/b.gif)
+
+### Cross Platform
+
+On **iOS 7+**, the widget is a tiny view that comes from the top with a simple push-gravity animation, using real `Ti.UI.iOS.Animator` physics engine (Tweetbot style).
+
+On **iOS 6**, a simple alert is displayed, insted.
+
+On **Android**, the default `Ti.UI.createNotification` method is used.
 
 
 ### Usage
@@ -11,13 +19,32 @@ Toast widget useful for notifications
 #### Instantiate-it
 
 ```javascript
-var Notifier = Alloy.createWidget('com.caffeinalab.titanium.notifications', options);
+var Notifier = Alloy.createWidget('com.caffeinalab.titanium.notifications', /* options */);
+```
+
+##### Options
+
+```javascript
+{
+
+	message: 'Notification Test', // the message to display. This set the global message.
+
+	duration: 2000, // time after go away. Valid for iOS7+ and Android
+	title: "Ti.App.name", // title for IOS 6 alerts
+	
+	/* iOS 7 properties */
+	elasticity: 0.5,
+	pushForce: 30, 
+	icon: '/appicon.png', // the icon to display on the left.
+	/* end */
+	
+}
 ```
 
 #### Show
 
 ```javascript
-Notifier.show([ message ]);
+Notifier.show('Hello, world!');
 ```
 
 #### Show with options override
@@ -26,19 +53,7 @@ Notifier.show([ message ]);
 Notifier.show({
 	message: 'Notification Test', 
 	icon: '/appicon.png',
-	pushForce: 10
+	pushForce: 10,
+	duration: 2500
 });
-```
-
-#### Options
-
-```javascript
-{
-	duration: 2000, // time after go away
-	title: "Ti.App.name", // title for IOS 6 alerts
-	elasticity: 0.5, // elasticity for IOS 7 toast animator
-	pushForce: 30, // push force for IOS 7 toast animator,
-	icon: '/appicon.png', // the icon to display in IOS 7 on the left,
-	message: 'Notification Test', // the message (globally)
-}
 ```
