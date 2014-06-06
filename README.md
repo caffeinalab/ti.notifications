@@ -14,6 +14,28 @@ On **iOS 6**, a simple alert is displayed, insted.
 On **Android**, the default `Ti.UI.createNotification` method is used.
 
 
+## Installation
+
+#### Via Gittio
+
+```
+gittio install com.caffeinalab.titanium.notifications
+```
+
+#### Via Github
+
+```
+git clone git@github.com:CaffeinaLab/com.caffeinalab.titanium.notifications.git app/widgets/com.caffeinalab.titanium.notifications
+```
+
+And add in your *config.json*, under `dependencies`:
+
+```
+"dependencies": {
+    "com.caffeinalab.titanium.notifications": "*"
+}
+```
+
 #### Require
 
 ```javascript
