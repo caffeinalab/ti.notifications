@@ -51,13 +51,13 @@ var Notifier = Alloy.createWidget('com.caffeinalab.titanium.notifications', /* o
 
 	duration: 2000, // time after go away. Valid for iOS7+ and Android
 	title: "Ti.App.name", // title for IOS 6 alerts
-	
+
 	/* iOS 7 properties */
 	elasticity: 0.5,
-	pushForce: 30, 
+	pushForce: 30,
 	icon: '/appicon.png', // the icon to display on the left.
 	/* end */
-	
+
 }
 ```
 
@@ -70,10 +70,11 @@ Notifier.show('Hello, world!');
 
 // Show settings other various overrides options.
 Notifier.show({
-	message: 'Notification Test', 
+	message: 'Notification Test',
 	icon: '/appicon.png',
 	pushForce: 10,
-	duration: 2500
+	duration: 2500,
+	click: function(){ alert("CLICKED!"); }
 });
 
 ```

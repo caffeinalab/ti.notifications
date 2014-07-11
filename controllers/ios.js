@@ -52,6 +52,7 @@ function hide() {
 
 if (args.message) $.caffeinaToastLabel.text = args.message;
 if (args.icon) $.caffeinaToastIcon.image = args.icon;
+if (args.click) $.caffeinaToastView.addEventListener('click', args.click);
 
 /* Listeners */
 
