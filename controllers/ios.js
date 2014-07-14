@@ -52,11 +52,13 @@ function hide() {
 
 if (args.message) $.caffeinaToastLabel.text = args.message;
 if (args.icon) $.caffeinaToastIcon.image = args.icon;
-if (args.click) $.caffeinaToastView.addEventListener('click', args.click);
 
 /* Listeners */
 
-$.caffeinaToastWindow.addEventListener('touchstart', hide);
+$.caffeinaToastWindow.addEventListener('touchstart', function(){
+	hide();
+	if (_.isFunction(args.click)) args.click();
+});
 $.caffeinaToastWindow.addEventListener('open', function(){
 	animator.startAnimator();
 });
