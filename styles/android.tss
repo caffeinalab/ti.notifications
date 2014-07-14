@@ -1,12 +1,8 @@
-".caffeinaToastWindow":{
-	fullscreen: true,
-	backgroundColor: '#0000'
-},
 ".caffeinaToastView":{
-	top: 0,
+	top: -65,
 	backgroundColor: '#A000',
 	height: 65,
-	touchEnabled: false
+	touchEnabled: true
 },
 ".caffeinaToastIcon":{
 	left: 8,

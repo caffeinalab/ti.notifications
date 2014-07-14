@@ -7,11 +7,9 @@ Alloy Titanium widget to display an in-app notification.
 
 ### Cross Platform ?
 
-On **iOS 7+**, the widget is a tiny view that comes from the top with a simple push-gravity animation, using real `Ti.UI.iOS.Animator` physics engine (Tweetbot style).
+The widget is a tiny view that comes from the top with a simple animation.
 
-On **iOS 6**, a simple alert is displayed, insted.
-
-On **Android**, the default `Ti.UI.createNotification` method is used.
+On iOS7+, the animation is managed by `Ti.UI.iOS.Animator` physics engine (Tweetbot style).
 
 
 ## Installation
@@ -47,16 +45,16 @@ var Notifier = Alloy.createWidget('com.caffeinalab.titanium.notifications', /* o
 ```javascript
 {
 
-	message: 'Notification Test', // the message to display. This set the global message.
+	message: 'Notification Test', // the message to display.
 
 	duration: 2000, // time after go away. Valid for iOS7+ and Android
-	title: "Ti.App.name", // title for IOS 6 alerts
+	icon: '/appicon.png', // icon to display on the left
 
-	/* iOS 7 properties */
-	elasticity: 0.5,
-	pushForce: 30,
-	icon: '/appicon.png', // the icon to display on the left.
-	/* end */
+	elasticity: 0.5, // iOS7+ only
+	pushForce: 30, // iOS7+ only
+	usePhysicsEngine: true // disable if you don't want on iOS7+
+
+	animationDuration: 200, // animation sliding duration
 
 }
 ```
@@ -65,17 +63,48 @@ var Notifier = Alloy.createWidget('com.caffeinalab.titanium.notifications', /* o
 
 ```javascript
 
-// Show setting the message as string
+// Show the widget setting the title
 Notifier.show('Hello, world!');
 
-// Show settings other various overrides options.
+// Show the widget, and override defaults
 Notifier.show({
 	message: 'Notification Test',
 	icon: '/appicon.png',
 	pushForce: 10,
 	duration: 2500,
-	click: function(){ alert("CLICKED!"); }
+	click: function(){ alert("OH, you clicked me!\nDo you think I'm weird?"); }
 });
 
 ```
 
+#### Fully stylable via TSS
+
+Override this options in your `app.tss`.
+
+```json
+".caffeinaToastWindow":{
+	fullscreen: true,
+	backgroundColor: '#0000'
+},
+".caffeinaToastView":{
+	top: 0,
+	backgroundColor: '#A000',
+	height: 65,
+	touchEnabled: false
+},
+".caffeinaToastIcon":{
+	left: 8,
+	height: 42
+},
+".caffeinaToastLabel":{
+	touchEnabled: false,
+	left: 60,
+	right: 10,
+	height: 60,
+	color: '#fff',
+	textAlign: 'left',
+	font: {
+		fontSize: 14
+	}
+}
+```

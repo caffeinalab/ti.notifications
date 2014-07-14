@@ -1,0 +1,6 @@
+<Alloy>
+	<View class="caffeinaToastView" id="caffeinaToastView">
+		<ImageView class="caffeinaToastIcon" id="caffeinaToastIcon" image="/appicon.png" />
+		<Label class="caffeinaToastLabel" id="caffeinaToastLabel" />
+	</View>
+</Alloy>

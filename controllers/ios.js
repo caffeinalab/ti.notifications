@@ -1,69 +1,75 @@
-/* Default */
-var args = _.extend({
-	elasticity: 0.5,
-	pushForce: 30,
-}, arguments[0] || {});
+var args = arguments[0] || {};
+var timeout = null;
 
 
-/* Vars */
-var timeout;
+/*
+Methods
+*/
 
-var animator = Ti.UI.iOS.createAnimator({
-	referenceView: $.caffeinaToastWindow
-});
-
-var collision = Ti.UI.iOS.createCollisionBehavior();
-collision.addItem($.caffeinaToastView);
-animator.addBehavior(collision);
-
-var dy = Ti.UI.iOS.createDynamicItemBehavior({
-	elasticity: args.elasticity
-});
-dy.addItem($.caffeinaToastView);
-animator.addBehavior(dy);
-
-var pusher = Ti.UI.iOS.createPushBehavior({
-	pushDirection: { x: 0, y: args.pushForce },
-});
-pusher.addItem($.caffeinaToastView);
-animator.addBehavior(pusher);
-
-/* API */
-
-function show() {
-	$.caffeinaToastWindow.open();
-
-	timeout = setTimeout(function(){
-		$.caffeinaToastWindow.animate({
-			top: -$.caffeinaToastWindow.height,
-			duration: 500
-		});
-		setTimeout(hide, 500);
-	}, args.duration);
-}
-
-function hide() {
+function close() {
 	clearTimeout(timeout);
-
-	$.caffeinaToastWindow.close();
+	$.caffeinaToastWindow.animate({
+		top: -$.caffeinaToastWindow.height,
+		duration: args.animationDuration
+	}, function() {
+		$.caffeinaToastWindow.close();
+	});
 }
 
-/* Init */
+/*
+Listeners
+*/
 
-if (args.message) $.caffeinaToastLabel.text = args.message;
+$.caffeinaToastWindow.addEventListener('touchstart', function(e){
+	close();
+	if (args.click) args.click(e);
+});
+
+/*
+Initialization
+*/
+
+$.caffeinaToastLabel.text = args.message;
 if (args.icon) $.caffeinaToastIcon.image = args.icon;
 
-/* Listeners */
+if /*ios7+*/ (args.usePhysicsEngine && Ti.UI.iOS.createAnimator) {
 
-$.caffeinaToastWindow.addEventListener('touchstart', function(){
-	hide();
-	if (_.isFunction(args.click)) args.click();
-});
-$.caffeinaToastWindow.addEventListener('open', function(){
-	animator.startAnimator();
-});
+	var animator = Ti.UI.iOS.createAnimator({ referenceView: $.caffeinaToastWindow });
+	var collision = Ti.UI.iOS.createCollisionBehavior();
+	var dy = Ti.UI.iOS.createDynamicItemBehavior({ elasticity: args.elasticity });
+	var pusher = Ti.UI.iOS.createPushBehavior({ pushDirection: { x: 0, y: args.pushForce }, });
 
-/* Public API */
+	collision.addItem($.caffeinaToastView);
+	dy.addItem($.caffeinaToastView);
+	pusher.addItem($.caffeinaToastView);
 
-exports.show = show;
-exports.hide = hide;
+	animator.addBehavior(collision);
+	animator.addBehavior(dy);
+	animator.addBehavior(pusher);
+
+	// This is a simple method to do the bounce animation:
+	// Create a Window with height=150 and top=-86, and when the window is opened,
+	// the View will fall from the sky for the "Push Behavior"
+	$.caffeinaToastWindow.addEventListener('open', function(){ animator.startAnimator(); });
+	$.caffeinaToastWindow.height = 150;
+	$.caffeinaToastWindow.top = -86;
+	$.caffeinaToastWindow.open();
+
+} else /*ios6*/ {
+
+	// Here, instead, set the Window.height equal to the View.height,
+	// and simply animate the top property of the Window
+	$.caffeinaToastWindow.top = -65;
+	$.caffeinaToastWindow.height = 65;
+
+	$.caffeinaToastWindow.open();
+	$.caffeinaToastWindow.animate({
+		top: 0,
+		duration: args.animationDuration
+	});
+
+}
+
+
+// Set the timer to automatically close the Window
+timeout = setTimeout(close, args.duration);
