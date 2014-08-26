@@ -12,6 +12,7 @@ function close() {
 		duration: args.animationDuration
 	});
 }
+exports.hide = close;
 
 /*
 Listeners

@@ -15,6 +15,7 @@ function close() {
 		$.caffeinaToastWindow.close();
 	});
 }
+exports.hide = close;
 
 /*
 Listeners

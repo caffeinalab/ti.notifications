@@ -8,8 +8,14 @@ var args = _.extend({
 	usePhysicsEngine: true
 }, arguments[0] || {});
 
+var That = null;
+
 exports.show = function(opt) {
-	Widget.createController(OS_IOS ? 'ios' : 'android',
+	That = Widget.createController(OS_IOS ? 'ios' : 'android',
 	_.extend(args, _.isObject(opt) ? opt : (_.isString(opt) ? { message: opt }: {})
 	));
+};
+
+exports.hide = function() {
+	if (That) That.hide();
 };
