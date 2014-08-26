@@ -75,6 +75,9 @@ Notifier.show({
 	click: function(){ alert("OH, you clicked me!\nDo you think I'm weird?"); }
 });
 
+// Hide
+Notifier.hide();
+
 ```
 
 #### Fully stylable via TSS
