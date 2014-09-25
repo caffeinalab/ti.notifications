@@ -3,14 +3,13 @@ com.caffeinalab.titanium.notifications
 
 Alloy Titanium widget to display an in-app notification.
 
-![image](http://cl.ly/image/2j462U291g3e/b.gif)
-
-### Cross Platform ?
-
 The widget is a tiny view that comes from the top with a simple animation.
 
-On iOS7+, the animation is managed by `Ti.UI.iOS.Animator` physics engine (Tweetbot style).
+![image](http://cl.ly/image/2j462U291g3e/b.gif)
 
+### Cross Platform?
+
+On iOS7+, the animation is managed by `Ti.UI.iOS.Animator` physics engine (Tweetbot style).
 
 ## Installation
 
@@ -22,11 +21,7 @@ gittio install com.caffeinalab.titanium.notifications
 
 #### Via Github
 
-```
-git clone git@github.com:CaffeinaLab/com.caffeinalab.titanium.notifications.git app/widgets/com.caffeinalab.titanium.notifications
-```
-
-And add in your *config.json*, under `dependencies`:
+Download the latest release and add in your *config.json*, under `dependencies`:
 
 ```
 "dependencies": {
@@ -52,7 +47,7 @@ var Notifier = Alloy.createWidget('com.caffeinalab.titanium.notifications', /* o
 
 	elasticity: 0.5, // iOS7+ only
 	pushForce: 30, // iOS7+ only
-	usePhysicsEngine: true // disable if you don't want on iOS7+
+	usePhysicsEngine: true, // disable if you don't want on iOS7+
 
 	animationDuration: 200, // animation sliding duration
 
@@ -85,10 +80,6 @@ Notifier.hide();
 Override this options in your `app.tss`.
 
 ```json
-".caffeinaToastWindow":{
-	fullscreen: true,
-	backgroundColor: '#0000'
-},
 ".caffeinaToastView":{
 	top: 0,
 	backgroundColor: '#A000',
@@ -110,4 +101,18 @@ Override this options in your `app.tss`.
 		fontSize: 14
 	}
 }
+```
+
+#### Work with Android or iOS modal Windows
+
+On Android is not possible to make it work with Windows.
+
+On iOS, with modal Windows, in not possible to open a non-modal window in front of another modal window.
+
+So, to make it work with theese two cases, use the `view` property on open:
+
+```javascript
+Notifier.show({
+	view: /* Your Window */
+});
 ```

@@ -11,11 +11,13 @@ var args = _.extend({
 var That = null;
 
 exports.show = function(opt) {
-	That = Widget.createController(OS_IOS ? 'ios' : 'android',
-	_.extend(args, _.isObject(opt) ? opt : (_.isString(opt) ? { message: opt }: {})
-	));
+	if (_.isObject(opt)) _.extend(args, opt);
+	if (_.isString(opt)) _.extend(args, { message: opt });
+	That = Widget.createController('window', args);
 };
 
 exports.hide = function() {
-	if (That) That.hide();
+	if (That != null) {
+		That.hide();
+	}
 };

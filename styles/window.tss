@@ -1,7 +1,3 @@
-".caffeinaToastWindow":{
-	fullscreen: true,
-	backgroundColor: '#0000'
-},
 ".caffeinaToastView":{
 	top: 0,
 	backgroundColor: '#A000',
