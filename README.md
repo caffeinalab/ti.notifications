@@ -1,5 +1,6 @@
-com.caffeinalab.titanium.notifications
-====================================
+# Ti.Notifications
+
+### com.caffeinalab.titanium.notifications
 
 Alloy Titanium widget to display an in-app notification.
 
