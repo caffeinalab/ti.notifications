@@ -26,7 +26,7 @@ gittio install com.caffeinalab.titanium.notifications
 
 Download the latest release and add in your *config.json*, under `dependencies`:
 
-```
+```json
 "dependencies": {
     "com.caffeinalab.titanium.notifications": "*"
 }
@@ -34,13 +34,13 @@ Download the latest release and add in your *config.json*, under `dependencies`:
 
 #### Require
 
-```javascript
+```js
 var Notifier = Alloy.createWidget('com.caffeinalab.titanium.notifications', /* options */);
 ```
 
 #### The Options
 
-```javascript
+```js
 {
 
 	message: 'Notification Test', // the message to display.
@@ -59,7 +59,7 @@ var Notifier = Alloy.createWidget('com.caffeinalab.titanium.notifications', /* o
 
 #### Usage
 
-```javascript
+```js
 
 // Show the widget setting the title
 Notifier.show('Hello, world!');
@@ -114,7 +114,7 @@ On iOS, with modal Windows, in not possible to open a non-modal window in front 
 
 So, to make it work with theese two cases, use the `view` property on open:
 
-```javascript
+```js
 Notifier.show({
 	view: /* Your Window */
 });
