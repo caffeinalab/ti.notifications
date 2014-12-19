@@ -2,7 +2,8 @@
 	top: 0,
 	backgroundColor: '#A000',
 	height: 65,
-	touchEnabled: false
+	touchEnabled: false,
+	layout: 'composite'
 },
 ".caffeinaToastIcon":{
 	left: 8,
