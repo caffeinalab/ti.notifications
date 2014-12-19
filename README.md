@@ -84,24 +84,24 @@ Override this options in your `app.tss`.
 
 ```json
 ".caffeinaToastView":{
-	top: 0,
-	backgroundColor: '#A000',
-	height: 65,
-	touchEnabled: false
+	"top": 0,
+	"backgroundColor": '#A000',
+	"height": 65,
+	"touchEnabled": false
 },
 ".caffeinaToastIcon":{
-	left: 8,
-	height: 42
+	"left": 8,
+	"height": 42
 },
 ".caffeinaToastLabel":{
-	touchEnabled: false,
-	left: 60,
-	right: 10,
-	height: 60,
-	color: '#fff',
-	textAlign: 'left',
-	font: {
-		fontSize: 14
+	"touchEnabled": false,
+	"left": 60,
+	"right": 10,
+	"height": 60,
+	"color": '#fff',
+	"textAlign": 'left',
+	"font": {
+		"fontSize": 14
 	}
 }
 ```
