@@ -1,5 +1,7 @@
 # Ti.Notifications
 
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/CaffeinaLab/Ti.Notifications?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ### com.caffeinalab.titanium.notifications
 
 Alloy Titanium widget to display an in-app notification.
