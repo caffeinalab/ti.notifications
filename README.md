@@ -119,3 +119,21 @@ Notifier.show({
 	view: /* Your Window */
 });
 ```
+
+## Contributing
+
+How to get involved:
+
+1. [Star](https://github.com/CaffeinaLab/Ti.Notifications/stargazers) the project!
+2. Answer questions that come through [GitHub issues](https://github.com/CaffeinaLab/Ti.Notifications/issues?state=open)
+3. [Report a bug](https://github.com/CaffeinaLab/Ti.Notifications/issues/new) that you find
+
+Pull requests are **highly appreciated**.
+
+Solve a problem. Features are great, but even better is cleaning-up and fixing issues in the code that you discover.
+
+## Copyright and license
+
+Copyright 2014 [Caffeina](http://caffeina.co) srl under the [MIT license](LICENSE.md).
+
+<p align="center"><a href="http://caffeina.co" target="_blank" title="Caffeina - Ideas Never Sleep"><img src="https://github.com/CaffeinaLab/BrandResources/blob/master/caffeina-handmade.png?raw=true" align="center" height="65"></a></p>
