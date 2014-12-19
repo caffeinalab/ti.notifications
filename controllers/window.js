@@ -19,6 +19,8 @@ function close() {
 
 		if (_.isFunction($container.close)) $container.close();
 		if (args.view != null) args.view.remove($container);
+		
+		if (_.isFunction(args.onClose)) args.onClose();
 
 	});
 }
