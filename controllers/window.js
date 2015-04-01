@@ -5,26 +5,27 @@ var $container = null;
 if (OS_ANDROID && args.view == null) {
 	throw new Error("com.caffeinalab.titanium.notifications: In Android you MUST set a view that contain the sliding view");
 }
+
 /*
 Methods
 */
 
-function close() {
+exports.hide = function() {
 	clearTimeout(timeout);
 
 	$container.animate({
-		top: -1 * $container.height,
-		duration: args.animationDuration
+		transform: Ti.UI.create2DMatrix().translate(0, -$container.height),
+		duration: 200
 	}, function() {
+		if (args.view != null) {
+			args.view.remove($container);
+		} else {
+			$container.close();
+		}
 
-		if (_.isFunction($container.close)) $container.close();
-		if (args.view != null) args.view.remove($container);
-		
 		if (_.isFunction(args.onClose)) args.onClose();
-
 	});
-}
-exports.hide = close;
+};
 
 
 /*
@@ -40,13 +41,15 @@ if (args.view == null) {
 		fullscreen: true
 	});
 } else {
-	$container = Ti.UI.createView({ backgroundColor: 'transparent' });
+	$container = Ti.UI.createView({
+		backgroundColor: 'transparent'
+	});
 	args.view.add($container);
 }
 
 $container.addEventListener('touchstart', function(e){
-	close();
-	if (_.isFunction(args.click)) args.click(e);
+	exports.hide();
+	if (_.isFunction(args.onClick)) args.onClick(e);
 });
 
 if (OS_IOS && args.usePhysicsEngine === true && Ti.UI.iOS.createAnimator != null) {
@@ -92,4 +95,4 @@ if (OS_IOS && args.usePhysicsEngine === true && Ti.UI.iOS.createAnimator != null
 
 
 // Set the timer to automatically close the Window
-timeout = setTimeout(close, args.duration);
+timeout = setTimeout(exports.hide, args.duration);
