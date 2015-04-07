@@ -7,7 +7,8 @@
 },
 ".caffeinaToastIcon":{
 	left: 8,
-	height: 42
+	height: 42,
+	borderRadius: 10
 },
 ".caffeinaToastLabel":{
 	touchEnabled: false,

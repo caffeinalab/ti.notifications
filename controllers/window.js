@@ -2,9 +2,6 @@ var args = arguments[0] || {};
 var timeout = null;
 var $container = null;
 
-if (OS_ANDROID && args.view == null) {
-	throw new Error("com.caffeinalab.titanium.notifications: In Android you MUST set a view that contain the sliding view");
-}
 
 /*
 Methods

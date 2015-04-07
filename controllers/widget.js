@@ -13,7 +13,22 @@ var That = null;
 exports.show = function(opt) {
 	if (_.isObject(opt)) _.extend(args, opt);
 	if (_.isString(opt)) _.extend(args, { message: opt });
-	That = Widget.createController('window', args);
+
+	if (OS_ANDROID && args.view == null) {
+
+		Ti.API.error("In Android you have to set a view that contain the sliding view. Fallbacking to Ti.UI.Notification.");
+
+		That = Ti.UI.createNotification({
+			message: args.message,
+			duration: args.duration
+		});
+		That.show();
+
+	} else {
+
+		That = Widget.createController('window', args);
+
+	}
 };
 
 exports.hide = function() {
