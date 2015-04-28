@@ -70,7 +70,7 @@ Notifier.show({
 	icon: '/appicon.png',
 	pushForce: 10,
 	duration: 2500,
-	click: function(){ alert("OH, you clicked me!\nDo you think I'm weird?"); }
+	onClick: function(){ alert("OH, you clicked me!\nDo you think I'm weird?"); }
 });
 
 // Hide
