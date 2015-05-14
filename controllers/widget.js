@@ -22,6 +22,7 @@ exports.show = function(opt) {
 			message: args.message,
 			duration: args.duration
 		});
+
 		That.show();
 
 	} else {
@@ -31,13 +32,12 @@ exports.show = function(opt) {
 	}
 };
 
-exports.update = function(message)
-{
-	That.update(message);
-};
-
 exports.hide = function() {
 	if (That != null) {
 		That.hide();
 	}
+};
+
+exports.setMessage = function(message) {
+	That.setMessage(message);
 };

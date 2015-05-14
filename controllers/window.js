@@ -3,9 +3,9 @@ var timeout = null;
 var $container = null;
 
 
-/*
-Methods
-*/
+/////////////
+// Methods //
+/////////////
 
 exports.hide = function() {
 	clearTimeout(timeout);
@@ -24,18 +24,21 @@ exports.hide = function() {
 	});
 };
 
-exports.update = function(message)
-{
+exports.setMessage = function(message) {
 	$.caffeinaToastLabel.text = message;
 };
 
+exports.setIcon = function(icon) {
+	$.caffeinaToastIcon.image = icon;
+};
 
-/*
-Initialization
-*/
 
-if (args.message != null) $.caffeinaToastLabel.text = args.message;
-if (args.icon != null) $.caffeinaToastIcon.image = args.icon;
+////////////////////
+// Initialization //
+////////////////////
+
+if (args.message != null) exports.setMessage(args.message);
+if (args.icon != null) exports.setIcon(args.icon);
 
 if (args.view == null) {
 	$container = Ti.UI.createWindow({
