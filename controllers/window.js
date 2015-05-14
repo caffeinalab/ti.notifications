@@ -24,6 +24,11 @@ exports.hide = function() {
 	});
 };
 
+exports.update = function(message)
+{
+	$.caffeinaToastLabel.text = message;
+};
+
 
 /*
 Initialization
