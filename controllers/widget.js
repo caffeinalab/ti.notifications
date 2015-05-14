@@ -31,6 +31,11 @@ exports.show = function(opt) {
 	}
 };
 
+exports.update = function(message)
+{
+	That.update(message);
+};
+
 exports.hide = function() {
 	if (That != null) {
 		That.hide();
