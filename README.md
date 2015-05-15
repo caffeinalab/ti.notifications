@@ -96,13 +96,13 @@ var url = "http://ipv4.download.thinkbroadband.com:8080/50MB.zip";
      // function called when the response data is available
      onload : function(e) {
          Notifier.setMessage('Success!');
-         setTimeout(function(
+         setTimeout(function(){
          	Notifier.hide();
-         ){},3000);
+         },3000);
      },
      // function called at regular intervals as the request data is being received.
      ondatastream : function(e) {
- 	Notifier.setMessage('Loading '+Math.round(e.progress.toFixed(2)*100)+'%');
+         Notifier.setMessage('Loading '+Math.round(e.progress.toFixed(2)*100)+'%');
      },
      // function called when an error occurs, including a timeout
      onerror : function(e) {
