@@ -73,10 +73,51 @@ Notifier.show({
 	onClick: function(){ alert("OH, you clicked me!\nDo you think I'm weird?"); }
 });
 
+// Update the notification text. Useful for loading %
+Notifier.setMessage('I updated the notifcation message!');
+
+// Update the icon to a new one
+Notifier.setIcon('/newicon.png');
+
 // Hide
 Notifier.hide();
 
 ```
+
+#### Loading Notification Example
+```
+var Notifier = Alloy.createWidget('com.caffeinalab.titanium.notifications', {duration: 100000});
+
+Notifier.show('Loading');
+
+// 50MB test file from thinkbroadband to simulate a slow load.
+var url = "http://ipv4.download.thinkbroadband.com:8080/50MB.zip";
+ var client = Ti.Network.createHTTPClient({
+     // function called when the response data is available
+     onload : function(e) {
+         Notifier.setMessage('Success!');
+         setTimeout(function(){
+         	Notifier.hide();
+         },3000);
+     },
+     // function called at regular intervals as the request data is being received.
+     ondatastream : function(e) {
+         Notifier.setMessage('Loading '+Math.round(e.progress.toFixed(2)*100)+'%');
+     },
+     // function called when an error occurs, including a timeout
+     onerror : function(e) {
+         Ti.API.debug(e.error);
+         Notifier.setMessage('Error, Please try again.');
+     },
+     timeout : 5000  // in milliseconds
+ });
+ // Prepare the connection.
+ client.open("GET", url);
+ // Send the request.
+ client.send();
+
+```
+
 
 #### Fully stylable via TSS
 
