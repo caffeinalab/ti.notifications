@@ -135,8 +135,8 @@ Override this options in your `app.tss`.
 	"left": 60,
 	"right": 10,
 	"height": 60,
-	"color": '#fff',
-	"textAlign": 'left',
+	"color": "#fff",
+	"textAlign": "left",
 	"font": {
 		"fontSize": 14
 	}
