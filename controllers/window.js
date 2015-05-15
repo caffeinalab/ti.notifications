@@ -100,4 +100,6 @@ if (OS_IOS && args.usePhysicsEngine === true && Ti.UI.iOS.createAnimator != null
 
 
 // Set the timer to automatically close the Window
-timeout = setTimeout(exports.hide, args.duration);
+if (args.duration != null) {
+	timeout = setTimeout(exports.hide, args.duration);
+}
