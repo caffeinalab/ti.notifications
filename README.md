@@ -85,37 +85,33 @@ Notifier.hide();
 ```
 
 #### Loading Notification Example
-```
-var Notifier = Alloy.createWidget('com.caffeinalab.titanium.notifications', {duration: 100000});
+
+```js
+var Notifier = Alloy.createWidget('com.caffeinalab.titanium.notifications', { duration: null });
 
 Notifier.show('Loading');
 
 // 50MB test file from thinkbroadband to simulate a slow load.
 var url = "http://ipv4.download.thinkbroadband.com:8080/50MB.zip";
- var client = Ti.Network.createHTTPClient({
-     // function called when the response data is available
-     onload : function(e) {
-         Notifier.setMessage('Success!');
-         setTimeout(function(){
-         	Notifier.hide();
-         },3000);
-     },
-     // function called at regular intervals as the request data is being received.
-     ondatastream : function(e) {
-         Notifier.setMessage('Loading '+Math.round(e.progress.toFixed(2)*100)+'%');
-     },
-     // function called when an error occurs, including a timeout
-     onerror : function(e) {
-         Ti.API.debug(e.error);
-         Notifier.setMessage('Error, Please try again.');
-     },
-     timeout : 5000  // in milliseconds
- });
- // Prepare the connection.
- client.open("GET", url);
- // Send the request.
- client.send();
-
+var client = Ti.Network.createHTTPClient({
+	// function called when the response data is available
+	onload : function(e) {
+		Notifier.setMessage('Success!');
+         	setTimeout(Notifier.hide, 3000);
+	},
+     	// function called at regular intervals as the request data is being received.
+     	ondatastream : function(e) {
+        	Notifier.setMessage('Loading ' + Math.round(e.progress.toFixed(2)*100) + '%');
+     	},
+     	// function called when an error occurs, including a timeout
+     	onerror : function(e) {
+        	Ti.API.debug(e.error);
+        	Notifier.setMessage('Error, Please try again.');
+     	},
+     	timeout: 5000
+});
+client.open("GET", url);
+client.send();
 ```
 
 
@@ -126,7 +122,7 @@ Override this options in your `app.tss`.
 ```json
 ".caffeinaToastView":{
 	"top": 0,
-	"backgroundColor": '#A000',
+	"backgroundColor": "#A000",
 	"height": 65,
 	"touchEnabled": false
 },
@@ -157,7 +153,7 @@ So, to make it work with theese two cases, use the `view` property on open:
 
 ```js
 Notifier.show({
-	view: /* Your Window */
+	view: /* Your Window/View */
 });
 ```
 
