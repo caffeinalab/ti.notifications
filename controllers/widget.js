@@ -41,3 +41,7 @@ exports.hide = function() {
 exports.setMessage = function(message) {
 	That.setMessage(message);
 };
+
+exports.setIcon = function(icon) {
+	That.setIcon(icon);
+};
