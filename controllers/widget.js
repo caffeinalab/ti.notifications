@@ -22,7 +22,7 @@ exports.show = function(opt) {
 			message: args.message,
 			duration: args.duration
 		});
-
+		That.setIcon = function(){};
 		That.show();
 
 	} else {
