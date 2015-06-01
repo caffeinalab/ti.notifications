@@ -32,6 +32,19 @@ exports.setIcon = function(icon) {
 	$.caffeinaToastIcon.image = icon;
 };
 
+exports.setStyle = function(style) {
+	switch(style) {
+	    case 'success':
+	    	Ti.API.info('SUCCESS STYLE');
+	        $.caffeinaToastView.backgroundColor = '#8000df10';
+	        break;
+	    case 'error':
+	   		Ti.API.info('ERROR STYLE');
+	    	$.caffeinaToastView.backgroundColor = '#80FF0000';
+	        break;
+      };
+};
+
 
 ////////////////////
 // Initialization //
@@ -39,6 +52,7 @@ exports.setIcon = function(icon) {
 
 if (args.message != null) exports.setMessage(args.message);
 if (args.icon != null) exports.setIcon(args.icon);
+if (args.style != null) exports.setStyle(args.style);
 
 if (args.view == null) {
 	$container = Ti.UI.createWindow({
