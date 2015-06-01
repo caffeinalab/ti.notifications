@@ -48,7 +48,7 @@ var Notifier = Alloy.createWidget('com.caffeinalab.titanium.notifications', /* o
 	duration: 2000, // time after go away. Valid for iOS7+ and Android
 	icon: '/appicon.png', // icon to display on the left
 
-	style: 'info' // 'info', 'success' or 'error' makes notification background black, green or red.
+	style: 'info' // 'info', 'success', 'error', 'warn',  notification background blue, green, red or amber.
 	
 	elasticity: 0.5, // iOS7+ only
 	pushForce: 30, // iOS7+ only
@@ -71,7 +71,7 @@ Notifier.show({
 	message: 'Notification Test',
 	icon: '/appicon.png',
 	pushForce: 10,
-	style: 'success' // sets the message background to green (50% opacity)
+	style: 'info' // sets the message background to blue (50% opacity)
 	duration: 2500,
 	onClick: function(){ alert("OH, you clicked me!\nDo you think I'm weird?"); }
 });
