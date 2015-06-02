@@ -48,6 +48,8 @@ var Notifier = Alloy.createWidget('com.caffeinalab.titanium.notifications', /* o
 	duration: 2000, // time after go away. Valid for iOS7+ and Android
 	icon: '/appicon.png', // icon to display on the left
 
+	style: 'info' // 'info', 'success', 'error', 'warn',  notification background blue, green, red or amber.
+	
 	elasticity: 0.5, // iOS7+ only
 	pushForce: 30, // iOS7+ only
 	usePhysicsEngine: true, // disable if you don't want on iOS7+
@@ -69,12 +71,16 @@ Notifier.show({
 	message: 'Notification Test',
 	icon: '/appicon.png',
 	pushForce: 10,
+	style: 'info' // sets the message background to blue (50% opacity)
 	duration: 2500,
 	onClick: function(){ alert("OH, you clicked me!\nDo you think I'm weird?"); }
 });
 
 // Update the notification text. Useful for loading %
 Notifier.setMessage('I updated the notifcation message!');
+
+// Update the notification style. Useful for error and success messages
+Notifier.setStyle('error');
 
 // Update the icon to a new one
 Notifier.setIcon('/newicon.png');
@@ -84,11 +90,10 @@ Notifier.hide();
 
 ```
 
-#### Loading Notification Example
+#### Loading Notification Example (With styling)
 
 ```js
 var Notifier = Alloy.createWidget('com.caffeinalab.titanium.notifications', { duration: null });
-
 Notifier.show('Loading');
 
 // 50MB test file from thinkbroadband to simulate a slow load.
@@ -96,7 +101,8 @@ var url = "http://ipv4.download.thinkbroadband.com:8080/50MB.zip";
 var client = Ti.Network.createHTTPClient({
 	// function called when the response data is available
 	onload : function(e) {
-		Notifier.setMessage('Success!');
+		Notifier.setStyle('success');
+		Notifier.setMessage('Successful Download!');
          	setTimeout(Notifier.hide, 3000);
 	},
      	// function called at regular intervals as the request data is being received.
@@ -106,7 +112,9 @@ var client = Ti.Network.createHTTPClient({
      	// function called when an error occurs, including a timeout
      	onerror : function(e) {
         	Ti.API.debug(e.error);
+        	Notifier.setStyle('error');
         	Notifier.setMessage('Error, Please try again.');
+        	setTimeout(Notifier.hide, 3000);
      	},
      	timeout: 5000
 });
@@ -171,4 +179,4 @@ Solve a problem. Features are great, but even better is cleaning-up and fixing i
 
 ## Copyright and license
 
-Copyright 2014 [Caffeina](http://caffeinalab.com) srl under the [MIT license](LICENSE.md).
+Copyright 2015 [Caffeina](http://caffeinalab.com) srl under the [MIT license](LICENSE.md).

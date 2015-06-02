@@ -2,6 +2,7 @@ var args = _.extend({
 	duration: 2000,
 	animationDuration: 250,
 	message: '',
+	style: '',
 	title: Ti.App.name,
 	elasticity: 0.5,
 	pushForce: 30,
@@ -37,6 +38,11 @@ exports.hide = function() {
 		That.hide();
 	}
 };
+
+exports.setStyle = function(style) {
+	That.setStyle(style);
+};
+
 
 exports.setMessage = function(message) {
 	That.setMessage(message);
