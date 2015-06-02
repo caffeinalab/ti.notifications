@@ -2,7 +2,7 @@ var args = _.extend({
 	duration: 2000,
 	animationDuration: 250,
 	message: '',
-	style: 'info',
+	style: null,
 	title: Ti.App.name,
 	elasticity: 0.5,
 	pushForce: 30,
