@@ -33,24 +33,15 @@ exports.setIcon = function(icon) {
 };
 
 exports.setStyle = function(style) {
-	switch(style) {
-	    case 'success':
-	    	Ti.API.info('SUCCESS STYLE');
-	        $.caffeinaToastView.backgroundColor = '#8000df10';
-	        break;
-	    case 'error':
-	   		Ti.API.info('ERROR STYLE');
-	    	$.caffeinaToastView.backgroundColor = '#80FF0000';
-	        break;
-	    case 'info':
-	   		Ti.API.info('INFO STYLE');
-	    	$.caffeinaToastView.backgroundColor = '#8000c0ff';
-	    	break;
-    	case 'warn':
-	   		Ti.API.info('WARN STYLE');
-	    	$.caffeinaToastView.backgroundColor = '#80ffc000';
-	    	break;
-      };
+	$.caffeinaToastView.backgroundColor = (function() {
+		switch (style) {
+			case 'success': return '#8000df10';
+			case 'error': return '#80FF0000';
+			case 'info': return '#8000c0ff';
+			case 'warn': return '#80ffc000';
+			default: return '#8000c0ff';
+		}
+	})();
 };
 
 

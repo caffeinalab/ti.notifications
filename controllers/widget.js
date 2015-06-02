@@ -2,7 +2,7 @@ var args = _.extend({
 	duration: 2000,
 	animationDuration: 250,
 	message: '',
-	style: '',
+	style: 'info',
 	title: Ti.App.name,
 	elasticity: 0.5,
 	pushForce: 30,
@@ -17,13 +17,16 @@ exports.show = function(opt) {
 
 	if (OS_ANDROID && args.view == null) {
 
-		Ti.API.error("In Android you have to set a view that contain the sliding view. Fallbacking to Ti.UI.Notification.");
+		Ti.API.error("Ti.Notifications: On Android you have to set a view that contain the sliding view. Fallbacking to Ti.UI.Notification.");
 
 		That = Ti.UI.createNotification({
 			message: args.message,
 			duration: args.duration
 		});
-		That.setIcon = function(){};
+
+		That.setIcon = function(){ Ti.API.warn('Ti.Notifications: setIcon is NoOP on Android'); };
+		That.setStyle = function(){ Ti.API.warn('Ti.Notifications: setStyle is NoOP on Android'); };
+
 		That.show();
 
 	} else {

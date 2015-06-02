@@ -49,7 +49,7 @@ var Notifier = Alloy.createWidget('com.caffeinalab.titanium.notifications', /* o
 	icon: '/appicon.png', // icon to display on the left
 
 	style: 'info' // 'info', 'success', 'error', 'warn',  notification background blue, green, red or amber.
-	
+
 	elasticity: 0.5, // iOS7+ only
 	pushForce: 30, // iOS7+ only
 	usePhysicsEngine: true, // disable if you don't want on iOS7+
@@ -103,8 +103,8 @@ var client = Ti.Network.createHTTPClient({
 	onload : function(e) {
 		Notifier.setStyle('success');
 		Notifier.setMessage('Successful Download!');
-         	setTimeout(Notifier.hide, 3000);
-	},
+      	setTimeout(Notifier.hide, 3000);
+		},
      	// function called at regular intervals as the request data is being received.
      	ondatastream : function(e) {
         	Notifier.setMessage('Loading ' + Math.round(e.progress.toFixed(2)*100) + '%');

@@ -3,7 +3,7 @@
 	"name": "Ti.Notifications",
 	"description" : "Useful Titanium+Alloy widget to handle notifications messages when app is in foreground.",
 	"author": "Flavio De Stefano",
-	"version": "1.5.2",
+	"version": "1.6.0",
 	"copyright":"Copyright (c) 2015",
 	"license":"MIT",
 	"min-alloy-version": "1.0",
