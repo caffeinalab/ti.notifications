@@ -3,6 +3,10 @@ var timeout = null;
 var $container = null;
 
 
+function ucfirst(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 /////////////
 // Methods //
 /////////////
@@ -33,15 +37,13 @@ exports.setIcon = function(icon) {
 };
 
 exports.setStyle = function(style) {
-	$.caffeinaToastView.backgroundColor = (function() {
-		switch (style) {
-			case 'success': return '#8000df10';
-			case 'error': return '#80FF0000';
-			case 'info': return '#8000c0ff';
-			case 'warn': return '#80ffc000';
-			default: return '#8000c0ff';
+	var className = (function() {
+		if ( ! style) {
+			style = "default";
 		}
+		return "caffeinaToast"+ucfirst(style);
 	})();
+	$.resetClass($.caffeinaToastView, "caffeinaToastView "+className);
 };
 
 
