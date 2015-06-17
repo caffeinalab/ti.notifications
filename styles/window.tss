@@ -20,4 +20,19 @@
 	font: {
 		fontSize: 14
 	}
+},
+".caffeinaToastSuccess": {
+	backgroundColor: '#8000df10'
+},
+".caffeinaToastError": {
+	backgroundColor: '#80FF0000'
+},
+".caffeinaToastInfo": {
+	backgroundColor: '#8000c0ff'
+},
+".caffeinaToastWarn": {
+	backgroundColor: '#80ffc000'
+},
+".caffeinaToastDefault": {
+	backgroundColor: '#8000c0ff'
 }
