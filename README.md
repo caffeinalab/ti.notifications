@@ -179,4 +179,4 @@ Solve a problem. Features are great, but even better is cleaning-up and fixing i
 
 ## Copyright and license
 
-Copyright 2015 [Caffeina](http://caffeinalab.com) srl under the [MIT license](LICENSE.md).
+Copyright 2015 [Caffeina](http://caffeinalab.com) srl under the [MIT license](LICENSE).
