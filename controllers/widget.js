@@ -12,8 +12,11 @@ var args = _.extend({
 var That = null;
 
 exports.show = function(opt) {
-	if (_.isObject(opt)) _.extend(args, opt);
-	if (_.isString(opt)) _.extend(args, { message: opt });
+	if (_.isObject(opt)) {
+		opt = _.extend({}, args, opt);
+	} else if (_.isString(opt)) {
+		opt = _.extend({}, args, { message: opt });
+	}
 
 	if (OS_ANDROID && args.view == null) {
 
@@ -31,7 +34,7 @@ exports.show = function(opt) {
 
 	} else {
 
-		That = Widget.createController('window', args);
+		That = Widget.createController('window', opt);
 
 	}
 };

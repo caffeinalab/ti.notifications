@@ -2,7 +2,6 @@ var args = arguments[0] || {};
 var timeout = null;
 var $container = null;
 
-
 function ucfirst(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -33,27 +32,26 @@ exports.setMessage = function(message) {
 };
 
 exports.setIcon = function(icon) {
-	$.caffeinaToastIcon.image = icon;
+	if (icon == null) {
+		$.resetClass($.caffeinaToastLabel, "caffeinaToastLabel caffeinaToastLabelWithoutIcon");
+	} else {
+		$.resetClass($.caffeinaToastLabel, "caffeinaToastLabel");
+		$.caffeinaToastIcon.image = icon;
+	}
 };
 
 exports.setStyle = function(style) {
-	var className = (function() {
-		if ( ! style) {
-			style = "default";
-		}
-		return "caffeinaToast"+ucfirst(style);
-	})();
-	$.resetClass($.caffeinaToastView, "caffeinaToastView "+className);
+	$.resetClass($.caffeinaToastView, "caffeinaToastView caffeinaToast" + ucfirst(style || "default"));
 };
-
 
 ////////////////////
 // Initialization //
 ////////////////////
 
 if (args.message != null) exports.setMessage(args.message);
-if (args.icon != null) exports.setIcon(args.icon);
 if (args.style != null) exports.setStyle(args.style);
+
+exports.setIcon(args.icon);
 
 if (args.view == null) {
 	$container = Ti.UI.createWindow({

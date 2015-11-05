@@ -21,6 +21,9 @@
 		fontSize: 14
 	}
 },
+".caffeinaToastLabelWithoutIcon":{
+	left: 10,
+},
 ".caffeinaToastSuccess": {
 	backgroundColor: '#8000df10'
 },
