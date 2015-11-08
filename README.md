@@ -48,7 +48,7 @@ var Notifier = Alloy.createWidget('com.caffeinalab.titanium.notifications', /* o
 	duration: 2000, // time after go away. Valid for iOS7+ and Android
 	icon: '/appicon.png', // icon to display on the left
 
-	style: 'info' // 'info', 'success', 'error', 'warn',  notification background blue, green, red or amber.
+	style: 'info', // 'info', 'success', 'error', 'warn',  notification background blue, green, red or amber.
 
 	elasticity: 0.5, // iOS7+ only
 	pushForce: 30, // iOS7+ only
