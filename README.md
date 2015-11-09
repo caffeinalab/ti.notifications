@@ -71,7 +71,7 @@ Notifier.show({
 	message: 'Notification Test',
 	icon: '/appicon.png',
 	pushForce: 10,
-	style: 'info' // sets the message background to blue (50% opacity)
+	style: 'info', // sets the message background to blue (50% opacity)
 	duration: 2500,
 	onClick: function(){ alert("OH, you clicked me!\nDo you think I'm weird?"); }
 });
