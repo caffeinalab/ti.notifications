@@ -18,13 +18,13 @@ exports.show = function(opt) {
 		opt = _.extend({}, args, { message: opt });
 	}
 
-	if (OS_ANDROID && args.view == null) {
+	if (OS_ANDROID && opt.view == null) {
 
 		Ti.API.error("Ti.Notifications: On Android you have to set a view that contain the sliding view. Fallbacking to Ti.UI.Notification.");
 
 		That = Ti.UI.createNotification({
-			message: args.message,
-			duration: args.duration
+			message: opt.message,
+			duration: opt.duration
 		});
 
 		That.setIcon = function(){ Ti.API.warn('Ti.Notifications: setIcon is NoOP on Android'); };
